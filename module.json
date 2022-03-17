@@ -1,0 +1,11 @@
+{
+    "name": "fvtt-copy-id",
+    "title": "Copy ID Button",
+    "description": "Foundry VTT Module that adds a button to copy the link ID of entities like actors for use elsewhere. (Skips the step to drag-and-drop to a journal page)",
+    "author": "MisterIXI#1504",
+    "Version": "1.0.0",
+    "minimumCoreVersion": "9",
+    "manifestPlusVersion": "1.2.0",
+    "url": "https://github.com/MisterIXI/fvtt-copy-id"
+
+}
