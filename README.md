@@ -1,6 +1,6 @@
 # fvtt-copy-id
 Foundry VTT Module that adds a button to copy the link ID of entities like actors for use elsewhere into the clipboard. You can achieve the same by drag-and-dropping it into a journal page and copying that out. 
-This module simply gives a little button to some windows to make it easier.  
+This module simply gives a little button to some windows to make it easier.  It will use the full foundry journal format (like `@Item[IokSbCSael7Hc8Cq]{Driftglobe}` or `@Scene[xdntImH0Xubnfk41]{Worldmap}`)
 (Top right the paperclip "ID" button) ![link button](copy_ID_example.png)
 
 ## Motivation
