@@ -16,5 +16,17 @@ Hooks.on('ready', function () {
 
             return buttons;
         });
+        //item window
+        Hooks.on('renderItemSheet', (app, html, data) => {
+            let openButton = $(`<a class="copy-ID" title="ID"><i class="fas fa-paperclip"></i>ID</a>`);
+            openButton.click(event => {
+                navigator.clipboard.writeText("@Item[" + app.item.id + "]{" + app.item.name + "}");
+                console.log("CopyID | Copied the ID: " + "@Item[" + app.item.id + "]{" + app.item.name + "}");
+            });
+
+            html.closest('.app').find('.copy-ID').remove();
+            let titleElement = html.closest('.app').find('.header-button');
+            openButton.insertBefore(titleElement[0]);
+        });
     }
 });
