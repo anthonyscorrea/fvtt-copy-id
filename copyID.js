@@ -1,5 +1,5 @@
 Hooks.on('ready', function () {
-    if (game.user.isGM) {
+    if (!game.settings.get("fvtt-copy-id", "copyIdVisibility") || game.user.isGM) {
         //actor window
         Hooks.on('getActorSheetHeaderButtons', function (actor, buttons) {
             console.log("CopyID: trying to render the button!");

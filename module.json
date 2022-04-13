@@ -11,7 +11,7 @@
     "download": "https://github.com/MisterIXI/fvtt-copy-id/releases/download/v1.0.0/v1.0.0.zip",
     "manifest": "https://raw.githubusercontent.com/MisterIXI/fvtt-copy-id/main/module.json",
     "bugs": "https://github.com/MisterIXI/fvtt-copy-id/issues",
-    "esmodules": [ "./copyID.js" ],
+    "esmodules": [ "./copyID.js", "./moduleSettings.js" ],
     "styles": [ "./copyIDstyle.css" ],
     "readme": "./README.md"
 }
