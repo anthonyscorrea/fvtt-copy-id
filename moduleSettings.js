@@ -5,9 +5,14 @@ Hooks.on('init', () => {
         scope: "world",
         config: true,
         default: false,
-        type: Boolean,
-        onChange: value => {
-            console.log(value);
-        }
+        type: Boolean
     });
+    game.settings.register("fvtt-copy-id", "suppressWarningPopups",{
+        name: "Suppress Warnings",
+        hint: "Suppress all visual (and console) warnings of the SSL mechanism.",
+        scope: "world",
+        config: true,
+        default: false,
+        type: Boolean
+    })
 });
