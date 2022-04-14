@@ -5,9 +5,6 @@ Hooks.on('init', () => {
         scope: "world",
         config: true,
         default: false,
-        type: Boolean,
-        onChange: value => {
-            console.log(value);
-        }
+        type: Boolean
     });
 });
