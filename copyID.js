@@ -13,7 +13,6 @@ function copyIdText(toCopy) {
         }
     }
 };
-
 Hooks.on('ready', function () {
     //Warn gm on lack of permissions
     if (location.protocol !== 'https:' && game.user.isGM && !game.settings.get("fvtt-copy-id", "suppressWarningPopups")) {
@@ -23,13 +22,19 @@ Hooks.on('ready', function () {
     if (!game.settings.get("fvtt-copy-id", "copyIdVisibility") || game.user.isGM) {
         //actor window
         Hooks.on('getActorSheetHeaderButtons', function (actor, buttons) {
-            console.log("CopyID: trying to render the button!");
+            // console.log("CopyID: trying to render the button!");
             const copyIDButton = {
                 label: "ID",
                 class: "copy-ID",
                 icon: "fas fa-paperclip",
                 onclick: () => {
-                    copyIdText("@Actor[" + actor.id.substring(6) + "]{" + actor.actor.name + "}");
+                    // check if actor is compendium entry
+                    if (actor.document.compendium) {
+                        copyIdText("@Compendium[" + actor.document.compendium.collection + "." + actor.id.substring(6) + "]{" + actor.actor.name + "}");
+                    }
+                    else {
+                        copyIdText("@Actor[" + actor.id.substring(6) + "]{" + actor.actor.name + "}");
+                    }
                 }
             };
             buttons.unshift(copyIDButton);
@@ -39,7 +44,13 @@ Hooks.on('ready', function () {
         Hooks.on('renderItemSheet', (app, html, data) => {
             let openButton = $(`<a class="copy-ID" title="ID"><i class="fas fa-paperclip"></i>ID</a>`);
             openButton.click(event => {
-                copyIdText("@Item[" + app.item.id + "]{" + app.item.name + "}");
+                //check if item is compendium entry
+                if (app.item.compendium) {
+                    copyIdText("@Compendium[" + app.item.compendium.collection + "." + app.item.id + "]{" + app.item.name + "}");
+                }
+                else {
+                    copyIdText("@Item[" + app.item.id + "]{" + app.item.name + "}");
+                }
             });
 
             html.closest('.app').find('.copy-ID').remove();
@@ -50,7 +61,13 @@ Hooks.on('ready', function () {
         Hooks.on('renderSceneConfig', (app, html, data) => {
             let openButton = $(`<a class="copy-ID" title="ID"><i class="fas fa-paperclip"></i>ID</a>`);
             openButton.click(event => {
-                copyIdText("@Scene[" + app.id.substring(13) + "]{" + app.object.name + "}");
+                //check if scene is compendium entry
+                if (app.document.compendium) {
+                    copyIdText("@Compendium[" + app.document.compendium.collection + "." + app.id.substring(13) + "]{" + app.object.name + "}");
+                }
+                else {
+                    copyIdText("@Scene[" + app.id.substring(13) + "]{" + app.object.name + "}");
+                }
             });
             html.closest('.app').find('.copy-ID').remove();
             let titleElement = html.closest('.app').find('.header-button');
